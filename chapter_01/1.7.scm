@@ -17,6 +17,7 @@
 ;原程序在计算小数和大数时，因精度问题，无法得出正确的解，修改思路是将good-enough中计算差值的方式改为变化比例
 ;程序如下：
 (define (new-good-enough? oldGuess newGuess) (< (/ (abs(- newGuess oldGuess)) oldGuess) 0.001))
+(define (improve guess x) (average guess (/ x guess)))
 (define (new-sqrt-iter guess x) 
     (if (new-good-enough? guess (improve guess x)) (improve guess x) (new-sqrt-iter (improve guess x) x)))
 (define (new-sqrt x) (new-sqrt-iter 1.0 x))
