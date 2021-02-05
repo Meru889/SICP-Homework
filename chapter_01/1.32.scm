@@ -9,3 +9,15 @@
         (combiner (term a) (accumulate combiner null-value term (next a) next b))
     )
 )
+
+(define (iter a result))
+
+(define (accmulate combiner null-value term a next b) 
+    (cond (> a b) null-value 
+        (iter (next a) (combiner (term a) null-value))
+    )
+)
+
+(define (sum term a next b) 
+    (accumulate addall 0 term a next b)
+)
